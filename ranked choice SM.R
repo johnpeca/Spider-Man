@@ -19,9 +19,10 @@ library(googlesheets4)
 # Load the file (UPDATE with right file name/location)
 election = read_sheet("https://docs.google.com/spreadsheets/d/159fWio7ZxPA7xasGasX_s9y8zAHIhBjQvP4t_g0gGhk/edit?resourcekey#gid=1266012131")
 
-# assumes the first nonrankedColumns columns can be ignored and the remaining columns are (resp) ranked choices
+# assumes the first nonrankedColumns columns can be ignored and the remaining columns are (resp) ranked choices (IN ORDER)
 nonrankedColumns = 1 # UPDATE if more leading non-ranked columns
-choices = ncol(election)-nonrankedColumns
+nonrankedColumns_end = 1 # UPDATE if more trailing non-ranked columns (default can be 0 if form set up correctly)
+choices = ncol(election)-nonrankedColumns-nonrankedColumns_end
 
 # Clean column names
 names(election)[nonrankedColumns+(1:choices)] = paste0('Choice',1:choices)
