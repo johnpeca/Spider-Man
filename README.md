@@ -1,7 +1,9 @@
 # Spider-Man
 
 File points to a **google sheets** output of a google form. Will need to:
+
 (1) authenticate through google account that has access to the google sheets file, and 
+
 (2) check box to allow edits through R.
 
 Assumes google form has minimal information for ranking, which would just be one multi-grid questions with COLUMNS corresponding to choices and ROWS corresponding to ranked choices (e.g., first row will select the column with the user's first ranked choice, second row will indicate the second ranked choice, etc.). Default assumption can assume 1 leading column (timestamp) and 0 trailing columns, and these can be updated. If more candidates than choices, will fill in remainder of ballot to give all other options equal rank of (# choices)+1 (e.g., if 7 candidates with top 3 choices stored, remaining candidates receive rank of 3+1=4).
@@ -12,6 +14,7 @@ Working through this file will first produce the **Tideman algorithm** determine
 And then the **Instant-Runoff** model winner.
 
 **Output will include**:
+
 (1) **election**: data frame with original google form data, which will be updated and cleaned in ETL step
 
 (2) **preferences**: matrix that counts head-to-head totals, with column indicating winners (majority) and row losers (minority). (So (i,j) indicates number of ballots that preferred i to j, while (j,i) indicates the number of ballots that preferred j to i. Note this is not going to be symmetric.)
