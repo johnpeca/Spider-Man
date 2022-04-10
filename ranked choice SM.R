@@ -17,7 +17,7 @@ library(googlesheets4)
 # ETL
 
 # Load the file (UPDATE with right file name/location)
-election = read_sheet("https://docs.google.com/spreadsheets/d/159fWio7ZxPA7xasGasX_s9y8zAHIhBjQvP4t_g0gGhk/edit?resourcekey#gid=1266012131")
+election = read_sheet("159fWio7ZxPA7xasGasX_s9y8zAHIhBjQvP4t_g0gGhk")
 
 # assumes the first nonrankedColumns columns can be ignored and the remaining columns are (resp) ranked choices (IN ORDER)
 nonrankedColumns = 1 # UPDATE if more leading non-ranked columns
